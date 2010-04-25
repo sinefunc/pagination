@@ -5,13 +5,13 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "pagination"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{A simplistic pagination library}
+    gem.description = %Q{Trying to make the pagination world a better place}
     gem.email = "cyx.ucron@gmail.com"
-    gem.homepage = "http://github.com/cyx/pagination"
+    gem.homepage = "http://github.com/sinefunc/pagination"
     gem.authors = ["Cyril David"]
     gem.add_development_dependency "contest"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_development_dependency "haml"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

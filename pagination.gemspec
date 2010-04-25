@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{pagination}
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Cyril David"]
@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
      "pagination.gemspec",
      "test/helper.rb",
      "test/test_pagination.rb",
+     "test/test_pagination_helpers.rb",
      "test/test_pagination_template.rb",
      "views/paginate.erb",
      "views/paginate.haml"
@@ -46,6 +47,7 @@ Gem::Specification.new do |s|
   s.test_files = [
     "test/helper.rb",
      "test/test_pagination.rb",
+     "test/test_pagination_helpers.rb",
      "test/test_pagination_template.rb"
   ]
 

@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require File.dirname(__FILE__) + '/../lib/pagination'
+
+if ['haml', 'erb'].include?(ARGV[0])
+  Pagination::Template.markup(ARGV[0])
+else
+  puts "Usage: pagination [erb|haml]"
+end

@@ -1,0 +1,35 @@
+<ul class="pagination">
+  <% if items.prev_page %>
+    <li class="prev-link">
+      <a href='<%= "?page=%s" % items.prev_page %>'>&laquo; Prev</a>
+    </li>
+  <% else %>
+    <li class="prev-link disabled">
+      <span>&laquo; Prev</span>
+    </li>
+  <% end %>
+
+  <li>
+    <ul class="page-numbers">
+      <% items.displayed_pages.each do |page| %>
+        <li>
+          <% if items.current?(page) %>
+            <span><%= page %></span>
+          <% else %>
+            <a href='<%= "?page=%s" % page %>'><%= page %></a>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </li>
+
+  <% if items.next_page %>
+    <li class="next-link">
+      <a href='<%= "?page=%s" % items.next_page %>'>Next &raquo;</a>
+    </li>
+  <% else %>
+    <li class="next-link disabled">
+      <span>Next &raquo;</span>
+    </li>
+  <% end %>
+</ul>

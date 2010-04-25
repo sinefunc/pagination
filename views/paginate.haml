@@ -1,0 +1,23 @@
+%ul.notList.pagination
+  - if items.prev_page
+    %li.prev-link
+      %a{:href => ("?page=%s" % items.prev_page)} &laquo; Prev
+  - else
+    %li.prev-link.disabled
+      %a(href='javascript:;') &laquo; Prev
+
+  %li
+    %ul.notList.page-numbers
+      - items.displayed_pages.each do |page|
+        %li
+          - if items.current?(page)
+            %span= page
+          - else
+            %a{:href => ("?page=%s" % page)}= page
+
+  - if items.next_page
+    %li.next-link
+      %a{:href => ("?page=%s" % items.next_page)} Next &raquo;
+  - else
+    %li.next-link.disabled
+      %a(href='javascript:;') Next &raquo;

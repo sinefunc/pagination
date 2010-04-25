@@ -2,6 +2,7 @@ module Pagination
   autoload :OhmAdapter, 'pagination/adapters/ohm'
   autoload :Collection, 'pagination/collection'
   autoload :Template,   'pagination/template'
+  autoload :Helpers,    'pagination/helpers'
 
   extend self
 

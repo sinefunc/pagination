@@ -12,7 +12,6 @@ begin
     gem.authors = ["Cyril David"]
     gem.add_development_dependency "contest"
     gem.add_development_dependency "haml"
-    gem.add_development_dependency "nokogiri"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

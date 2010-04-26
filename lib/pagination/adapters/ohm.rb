@@ -9,6 +9,10 @@ module Pagination
       @start   = (page - 1) * per_page
     end
 
+    def empty?
+      @total.zero?
+    end
+
   protected
     def collection
       if @dataset.respond_to?(:sort) 

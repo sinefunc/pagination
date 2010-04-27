@@ -18,7 +18,7 @@ module Pagination
       if @dataset.respond_to?(:sort) 
         @dataset.sort sort_options
       else
-        @dataset.all @start, per_page
+        @dataset.all @start, @start + per_page - 1
       end
     end
 

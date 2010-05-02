@@ -18,7 +18,7 @@ module Pagination
     def collection
       if @sort_by
         @dataset.sort_by @sort_by, sort_options
-      elsif @dataset.respond_to?(:sort) && @dataset.method(:sort).arity > 0
+      elsif @dataset.respond_to?(:sort) && !@dataset.method(:sort).arity.zero?
         @dataset.sort sort_options
       else
         @dataset.all sort_options

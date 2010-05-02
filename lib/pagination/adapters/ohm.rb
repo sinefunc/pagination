@@ -5,6 +5,7 @@ module Pagination
 
       @dataset = dataset
       @total   = dataset.size
+      @sort_by = options[:sort_by]
       @order   = options[:order]
       @start   = (page - 1) * per_page
     end
@@ -15,18 +16,19 @@ module Pagination
 
   protected
     def collection
-      if @dataset.respond_to?(:sort) 
+      if @sort_by
+        @dataset.sort_by @sort_by, sort_options
+      elsif @dataset.respond_to?(:sort)
         @dataset.sort sort_options
       else
-        @dataset.all sort_options
+        @dataset.all @start, per_page
       end
     end
 
     def sort_options
       { :start => @start,
         :limit => @per_page,
-        :order => 'DESC',
-        :by    => @order
+        :order => @order
       }
     end
   end

@@ -4,7 +4,9 @@ module Pagination
 
     include Enumerable
 
-    attr :page, :per_page, :total
+    attr :page
+    attr :per_page
+    attr :total
 
     # When subclassing `Pagination::Collection`, make sure you call super
     # in order to use `page` and `per_page`.

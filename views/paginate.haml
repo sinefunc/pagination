@@ -1,19 +1,24 @@
 - if items.render?
-  %div.pagination
+  %nav.pagination
     - if items.prev_page
-      %a.prev-link{:href => ("?page=%s" % items.prev_page)}
+      %a.prev-link{:href => ("?page=%d" % items.prev_page)}
         %span &larr; Previous
-      
-    %ul
-      - items.displayed_pages.each do |page|
-        - if items.current?(page)
-          %li.active
-            %span= page
-        - else
-          %li
-            %a{:href => ("?page=%s" % page)}= page
-
+    %nav.page-numbers
+      %span.current-page
+        %span
+          %strong
+            Page
+          = items.page
+          of
+          = items.total_pages
+      %ul                        
+        - items.displayed_pages.each do |page|
+          - if items.current?(page)
+            %li.active
+              %span= page           
+          - else
+            %li
+              %a{:href => ("?page=%d" % page)}= page
     - if items.next_page
-      %a.next-link{:href => ("?page=%s" % items.next_page)}
+      %a.next-link{:href => ("?page=%d" % items.next_page)}
         %span Next &rarr;
-

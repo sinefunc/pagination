@@ -33,23 +33,23 @@ class TestPaginationTemplate < Test::Unit::TestCase
 
     should "have a ul > li.next-link with page=2" do
       assert_equal 1, 
-        doc.search('div.pagination > a.next-link[href="?page=2"]').length
+        doc.search('nav.pagination > a.next-link[href="?page=2"]').length
     end
 
     should "display the first page as the current page" do
-      assert_equal 1, doc.search('div.pagination > ul > li > span').length
+      assert_equal 1, doc.search('nav.pagination > nav.page-numbers > ul > li > span').length
 
-      assert_equal '1', doc.search('div.pagination > ul > li > span').text
+      assert_equal '1', doc.search('nav.pagination > nav.page-numbers > ul > li > span').text
     end
 
     should "display pages 2 to 5 as links" do
       (2..5).each do |page|
         assert_equal 1, 
-          doc.search(%(div.pagination > ul > li > 
+          doc.search(%(nav.pagination > nav.page-numbers > ul > li > 
                        a[href="?page=#{page}"])).length
 
         assert_equal page.to_s, 
-          doc.search(%(div.pagination > ul > li > 
+          doc.search(%(nav.pagination > nav.page-numbers > ul > li > 
                        a[href="?page=#{page}"])).text
       end
     end

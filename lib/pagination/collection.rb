@@ -73,6 +73,10 @@ module Pagination
     def each(&block)
       collection.each(&block) 
     end
+    
+    def total_pages
+      (total / per_page.to_f).ceil
+    end
 
   protected
     def collection
@@ -80,12 +84,7 @@ module Pagination
     end
 
     def pages
-      1..last_page
+      1..total_pages
     end
-
-    def last_page
-      (total / per_page.to_f).ceil
-    end
-
   end
 end

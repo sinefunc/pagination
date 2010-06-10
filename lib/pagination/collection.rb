@@ -46,17 +46,23 @@ module Pagination
     # based on the current page.
     #
     # If we have 100 pages for example and we're at page 50,
-    # this would simple return 
+    # this would simply return 
     #
-    #     [50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
+    #     [45, 46, 47, 48, 49, 50, 51, 52, 53, 54]
     #
     # When we're at page 1, it displays 1 to 10.
     #
     # You can pass in a number to limit the total displayed pages.
-    # 1 2 3 4 5
-    def displayed_pages(limit = 10)
-      lower = [page, [pages.last - limit, 0].max + 1].min
-      upper = [page + limit - 1, pages.last].min
+    def displayed_pages(limit = 10, left_offset = -5, right_offset = 4)
+      lower, upper = nil, nil
+
+      if page + left_offset < 1 || page + right_offset > pages.last
+        lower = [page, [pages.last - limit, 0].max + 1].min
+        upper = [page + limit - 1, pages.last].min
+      else
+        lower = page + left_offset
+        upper = page + right_offset
+      end
 
       (lower..upper).to_a
     end

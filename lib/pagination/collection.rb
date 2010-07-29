@@ -77,7 +77,7 @@ module Pagination
     end
 
     def each(&block)
-      collection.each(&block) 
+      results.each(&block) 
     end
     
     def total_pages

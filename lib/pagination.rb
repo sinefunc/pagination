@@ -1,13 +1,18 @@
 module Pagination
-  autoload :OhmAdapter, 'pagination/adapters/ohm'
-  autoload :Collection, 'pagination/collection'
-  autoload :Template,   'pagination/template'
-  autoload :Helpers,    'pagination/helpers'
+  autoload :OhmAdapter,     'pagination/adapters/ohm'
+  autoload :SunspotAdapter, 'pagination/adapters/sunspot'
+  autoload :Collection,     'pagination/collection'
+  autoload :Template,       'pagination/template'
+  autoload :Helpers,        'pagination/helpers'
 
   extend self
 
   def paginate(collection, options = {})
-    adapter.new(collection, options)
+    if defined?(Sunspot) and collection.is_a?(Sunspot::Search::StandardSearch)
+      SunspotAdapter.new(collection, options)
+    else
+      adapter.new(collection, options)
+    end
   end
 
   def per_page(per_page = nil)

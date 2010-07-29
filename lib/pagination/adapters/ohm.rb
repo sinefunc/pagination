@@ -10,12 +10,7 @@ module Pagination
       @start   = (page - 1) * per_page
     end
 
-    def empty?
-      @total.zero?
-    end
-
-  protected
-    def collection
+    def results
       if @sort_by
         @dataset.sort_by @sort_by, sort_options
       elsif @dataset.respond_to?(:sort) && !@dataset.method(:sort).arity.zero?
@@ -25,6 +20,7 @@ module Pagination
       end
     end
 
+  protected
     def sort_options
       { :start => @start,
         :limit => @per_page,

@@ -83,12 +83,17 @@ module Pagination
     def total_pages
       (total / per_page.to_f).ceil
     end
-
-  protected
-    def collection
-      raise Unimplemented, "You must implement collection"  
+  
+    def empty?
+      total.zero?
     end
 
+    def results
+      raise Unimplemented, "You must implement collection"  
+    end
+    alias :to_a :results
+
+  protected
     def pages
       1..total_pages
     end

@@ -40,4 +40,3 @@ module Pagination
   end
 end
 
-

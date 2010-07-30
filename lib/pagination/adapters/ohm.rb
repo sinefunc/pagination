@@ -6,7 +6,7 @@ module Pagination
       @dataset = dataset
       @total   = dataset.size
       @sort_by = options[:sort_by]
-      @order   = options[:order]
+      @order   = convert_order_param(options[:order])
       @start   = (page - 1) * per_page
     end
 
@@ -21,6 +21,15 @@ module Pagination
     end
 
   protected
+    def convert_order_param(order)
+      case order
+      when :asc  then "ASC ALPHA"
+      when :desc then "DESC ALPHA"
+      else
+        order
+      end
+    end
+
     def sort_options
       { :start => @start,
         :limit => @per_page,

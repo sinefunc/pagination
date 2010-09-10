@@ -11,7 +11,9 @@ module Pagination
     end
 
     def results
-      if @sort_by
+      if @dataset.kind_of?(Ohm::Model::List)
+        @dataset[@start, @per_page + @start - 1]
+      elsif @sort_by
         @dataset.sort_by @sort_by, sort_options
       elsif @dataset.respond_to?(:sort) && !@dataset.method(:sort).arity.zero?
         @dataset.sort sort_options
